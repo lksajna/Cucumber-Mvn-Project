@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'MAVEN'
+        maven 'maven'
         jdk 'JDK'
     }
     options {
@@ -15,7 +15,8 @@ pipeline {
     }
     
     parameters {
-        string(name: 'TagName', defaultValue: "@employee", description: 'Scenario Tag to be run')
+        string(name: 'TAG_NAME', defaultValue: "@employee", description: 'Scenario Tag to be run')
+        choice(name: 'BRANCH_NAME', choices: ['main', 'sajnaNew'], description: 'Execution on branch') 
     }
     
     stages {
@@ -41,7 +42,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh "mvn -f pom.xml test"
-                sh "mvn clean verify -Dcucumber.filter.tags='$params.TagName' -DfailIfNoTests=false"
+                sh "mvn clean verify -Dcucumber.filter.tags='$params.TAG_NAME' -DfailIfNoTests=false"
             }
 //             post {
 //                 always {
