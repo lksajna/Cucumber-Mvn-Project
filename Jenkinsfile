@@ -18,7 +18,9 @@ pipeline {
         string(name: 'TAG_NAME', defaultValue: "@employee", description: 'Scenario Tag to be run')
         choice(name: 'BRANCH_NAME', choices: ['master', 'sajnaNew'], description: 'Execution on branch') 
     }
-    
+    environment {
+        JAVA_OPTS = "-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=86400"
+    }
     stages {
         stage('Initialize') {
             steps {
