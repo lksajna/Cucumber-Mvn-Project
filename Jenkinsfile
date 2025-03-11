@@ -16,7 +16,7 @@ pipeline {
     
     parameters {
         string(name: 'TAG_NAME', defaultValue: "@employee", description: 'Scenario Tag to be run')
-        choice(name: 'BRANCH_NAME', choices: ['main', 'sajnaNew'], description: 'Execution on branch') 
+        choice(name: 'BRANCH_NAME', choices: ['master', 'sajnaNew'], description: 'Execution on branch') 
     }
     
     stages {
