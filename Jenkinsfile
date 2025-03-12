@@ -19,8 +19,7 @@ pipeline {
         choice(name: 'BRANCH_NAME', choices: ['master', 'sajnaNew'], description: 'Execution on branch') 
     }
     environment {
-        JAVA_OPTS = -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=86400
-                    -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.USE_BINARY_WRAPPER=true
+       JAVA_OPTS = "-Dorg.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL=86400 -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.USE_BINARY_WRAPPER=true"
     }
     stages {
         stage('Initialize') {
